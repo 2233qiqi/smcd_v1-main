@@ -34,7 +34,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
     G4Material *worldmat = nist->FindOrBuildMaterial("G4_Galactic");
 
     // World
-    G4double worldX = 20. * um, worldY = 20. * um, worldZ = 15. * um;
+    G4double worldX = 20. * um, worldY = 20. * um, worldZ = 20 * um;
     auto *solidWorld = new G4Box("SoildWorld", worldX, worldY, worldZ);
     G4LogicalVolume *logicWorld = new G4LogicalVolume(solidWorld, worldmat, "LogicWorld");
     G4VPhysicalVolume *physWorld = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), logicWorld, "PhysWorld", 0, false, 0, checkOverlaps);
@@ -54,12 +54,18 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
     // Ni
     G4int NumLayersNi63 = 10;
-    G4double Ni63X = 10. * um, Ni63Y = 10. * um, Ni63Z = 0.25 * um;
-    G4double layerSpacing = 0.25 * um;
+    G4double layerSpacing = 0.1 * um;
+    G4double Ni63X = 10. * um, Ni63Y = 10. * um, Ni63Z = 1 * um;
 
     auto *solidNi63 = new G4Box("SolidNi63", Ni63X, Ni63Y, Ni63Z);
     auto *logicalNi63 = new G4LogicalVolume(solidNi63, Ni63, "LogicNi63");
-    new G4PVReplica("Ni64layer", logicalNi63, logicWorld, kZAxis, NumLayersNi63, layerSpacing); // 多个层
+
+    // Ni-layer
+    auto *solidNi63layer = new G4Box("SolidNi63", Ni63X, Ni63Y, Ni63Z);
+    auto *logicalNi63layer = new G4LogicalVolume(solidNi63layer, Ni63, "LogicaNi63layer");
+
+    new G4PVReplica("Ni63layer", logicalNi63layer, logicalNi63, kZAxis, NumLayersNi63, layerSpacing);
+    G4VPhysicalVolume *physNi63 = new G4PVPlacement(0, G4ThreeVector(0., 0., -2. * um), logicalNi63, "PhysNi63", logicWorld, false, 0, checkOverlaps);
 
     auto *niVisAtt = new G4VisAttributes(G4Colour(1.0, 0.843, 0.0, 0.8));
     niVisAtt->SetVisibility(true);
