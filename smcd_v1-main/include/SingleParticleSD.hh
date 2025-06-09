@@ -42,9 +42,10 @@ private:
     // Results
     std::vector<G4double> fMeanEdep;
     std::vector<G4double> fStdError;
-  
+
     // 计算总的能量沉积
     G4double fTotalEdepAllEvents = 0.0;
+
     G4int fEventCount = 0;
 };
 

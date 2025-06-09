@@ -44,6 +44,10 @@ G4bool SingleParticleSD::ProcessHits(G4Step *step, G4TouchableHistory *)
     if (edep <= 0.0)
         return false;
 
+    G4int replicaID = step->GetPreStepPoint()->GetTouchableHandle()->GetReplicaNumber();
+    if (replicaID != 0)
+        return false;
+
     G4ThreeVector pos = step->GetPreStepPoint()->GetPosition();
 
     G4double dist = pos.mag();
@@ -120,7 +124,10 @@ void SingleParticleSD::EndOfEvent(G4HCofThisEvent *hce)
     {
         totalEdep += edep;
     }
+    fTotalEdepAllEvents += totalEdep;
 
-    //G4cout << ">>> Total energy deposited in this event: "
-           //<< totalEdep / keV << " keV" << G4endl;
+    G4cout << ">>> Total energy deposited in this event: "
+           << totalEdep / keV << " keV" << G4endl;
+    G4cout << "\n=== Total energy deposited across all events: "
+           << fTotalEdepAllEvents / eV << " eV" << G4endl;
 };
