@@ -52,6 +52,7 @@ G4bool SingleParticleSD::ProcessHits(G4Step *step, G4TouchableHistory *)
         fEdepSum2[replicaID] += edep * edep;
         fHitCounts[replicaID]++;
     }
+    // 计算每一层的能量沉积
 
     G4ThreeVector pos = step->GetPreStepPoint()->GetPosition();
 
