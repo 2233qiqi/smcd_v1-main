@@ -56,12 +56,13 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
     G4int NumLayersNi63 = 10;
     G4double layerSpacing = 0.1 * um;
     G4double Ni63X = 10. * um, Ni63Y = 10. * um, Ni63Z = 1 * um;
+    G4double totalNi63Z = NumLayersNi63 * layerSpacing;
 
-    auto *solidNi63 = new G4Box("SolidNi63", Ni63X, Ni63Y, Ni63Z);
+    auto *solidNi63 = new G4Box("SolidNi63", Ni63X, Ni63Y, totalNi63Z / 2);
     auto *logicalNi63 = new G4LogicalVolume(solidNi63, Ni63, "LogicNi63");
 
     // Ni-layer
-    auto *solidNi63layer = new G4Box("SolidNi63", Ni63X, Ni63Y, Ni63Z);
+    auto *solidNi63layer = new G4Box("SolidNi63", Ni63X, Ni63Y, layerSpacing / 2);
     auto *logicalNi63layer = new G4LogicalVolume(solidNi63layer, Ni63, "LogicaNi63layer");
 
     new G4PVReplica("Ni63layer", logicalNi63layer, logicalNi63, kZAxis, NumLayersNi63, layerSpacing);
