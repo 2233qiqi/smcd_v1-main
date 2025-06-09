@@ -45,8 +45,13 @@ G4bool SingleParticleSD::ProcessHits(G4Step *step, G4TouchableHistory *)
         return false;
 
     G4int replicaID = step->GetPreStepPoint()->GetTouchableHandle()->GetReplicaNumber();
-    if (replicaID != 0)
-        return false;
+    if (replicaID >= 0 && replicaID < fNbins)
+    {
+        std::lock_guard<std::mutex> lock(fMutex);
+        fEdepSum[replicaID] += edep;
+        fEdepSum2[replicaID] += edep * edep;
+        fHitCounts[replicaID]++;
+    }
 
     G4ThreeVector pos = step->GetPreStepPoint()->GetPosition();
 
@@ -129,5 +134,5 @@ void SingleParticleSD::EndOfEvent(G4HCofThisEvent *hce)
     G4cout << ">>> Total energy deposited in this event: "
            << totalEdep / keV << " keV" << G4endl;
     G4cout << "\n=== Total energy deposited across all events: "
-           << fTotalEdepAllEvents / eV << " eV" << G4endl;
+           << fTotalEdepAllEvents / keV << " keV" << G4endl;
 };
