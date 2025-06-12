@@ -52,23 +52,23 @@ G4bool SingleParticleSD::ProcessHits(G4Step *step, G4TouchableHistory *)
         fEdepSum2[replicaID] += edep * edep;
         fHitCounts[replicaID]++;
     }
-    // 计算每一层的能量沉积
+    /* // 计算每一层的能量沉积
 
-    G4ThreeVector pos = step->GetPreStepPoint()->GetPosition();
+     G4ThreeVector pos = step->GetPreStepPoint()->GetPosition();
 
-    G4double dist = pos.mag();
-    if (dist > fMaxDist)
-        return false;
+     G4double dist = pos.mag();
+     if (dist > fMaxDist)
+         return false;
 
-    G4int bin = static_cast<int>(dist / fBinWidth);
-    if (bin >= fNbins)
-        bin = fNbins - 1;
+     G4int bin = static_cast<int>(dist / fBinWidth);
+     if (bin >= fNbins)
+         bin = fNbins - 1;
 
-    std::lock_guard<std::mutex> lock(fMutex);
-    fEdepSum[bin] += edep;
-    fEdepSum2[bin] += edep * edep;
-    fHitCounts[bin]++;
-
+     std::lock_guard<std::mutex> lock(fMutex);
+     fEdepSum[bin] += edep;
+     fEdepSum2[bin] += edep * edep;
+     fHitCounts[bin]++;
+ */
     return true;
 }
 
