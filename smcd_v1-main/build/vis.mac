@@ -49,7 +49,7 @@
 /vis/viewer/set/autoRefresh true
 /vis/verbose warnings
 
-/tracking/verbose 1
+
 
 
 # Initialize GPS
