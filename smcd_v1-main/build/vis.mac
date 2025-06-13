@@ -60,12 +60,12 @@
 /gps/particle e-
 /gps/pos/type Volume
 /gps/pos/shape Para
-/gps/pos/centre 0 0 -0 um
+/gps/pos/centre 0 0 -7 um
 /gps/pos/halfx 10 um
 /gps/pos/halfy 10 um
-/gps/pos/halfz 3 um
+/gps/pos/halfz 5 um
 
-/gps/direction 0 0 1
+##/gps/direction 0 0 1  //定向Z轴发射
 /gps/ang/type iso
 /gps/ang/rot1 1 0 0
 /gps/ang/rot2 0 1 0

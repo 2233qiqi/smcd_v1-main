@@ -119,7 +119,7 @@ void SingleParticleSD::SaveToROOT(const G4String &filename)
     // Save plot image
     TCanvas canvas("canvas", "Energy Deposit", 800, 600);
     graph->Draw("AP");
-    canvas.SaveAs("Sigle-energy-deposit.png");
+    canvas.SaveAs("Single-energy-deposit.png");
 
     file.Close();
 }
@@ -132,8 +132,8 @@ void SingleParticleSD::EndOfEvent(G4HCofThisEvent *hce)
     }
     fTotalEdepAllEvents += totalEdep;
 
-    G4cout << ">>> Total energy deposited in this event: "
-           << totalEdep / keV << " keV" << G4endl;
+    // G4cout << ">>> Total energy deposited in this event: "
+    //<< totalEdep / keV << " keV" << G4endl;
     G4cout << "\n=== Total energy deposited across all events: "
            << fTotalEdepAllEvents / keV << " keV" << G4endl;
 };
