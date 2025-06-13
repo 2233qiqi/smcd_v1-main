@@ -19,11 +19,12 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
     // 63Ni
     G4Isotope *isoNi63 = new G4Isotope("Ni63", 28, 63, 62.9296 * g / mole);
-    G4Isotope *isoNi64 = new G4Isotope("Ni64", 6, 14, 14.000 * g / mole);
+    G4Isotope *isoNi64 = new G4Isotope("Ni64", 28, 64, 63.92797 * g / mole);
     G4Element *iso_elNi = new G4Element("CustomNickel", "Ni", 2);
     iso_elNi->AddIsotope(isoNi63, 20. * perCent);
     iso_elNi->AddIsotope(isoNi64, 80. * perCent);
     G4Material *MixNi = new G4Material("Ni", 8.9 * g / cm3, 1);
+    MixNi->AddElement(iso_elNi, 100. * perCent);
 
     // SiC
     G4Element *elSi = new G4Element("Silicon", "Si", 14, 28.09 * g / mole);

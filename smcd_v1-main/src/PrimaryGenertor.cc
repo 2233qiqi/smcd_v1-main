@@ -1,38 +1,52 @@
 #include "PrimaryGenerator.hh"
-#include "G4GeneralParticleSource.hh"
-#include "G4ParticleTable.hh"
-#include "G4SystemOfUnits.hh"
 
-#include "PrimaryGenerator.hh"
+#include "G4ParticleGun.hh"
+#include "G4IonTable.hh"
+#include "G4ParticleDefinition.hh"
+#include "G4Geantino.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4Event.hh"
-#include "G4IonTable.hh"
+#include "G4Exception.hh"
 
-PrimaryGenerator::PrimaryGenerator() : G4VUserPrimaryGeneratorAction()
+PrimaryGenerator::PrimaryGenerator()
+    : G4VUserPrimaryGeneratorAction(),
+      fParticleGun(nullptr)
 {
-    particleGun = new G4ParticleGun(1);
-
-    G4int Z = 28;
-    G4int A = 63;
-    G4double ionEnergy = 0. * keV;
-    G4ParticleDefinition *ion = G4IonTable::GetIonTable()->GetIon(Z, A, ionEnergy);
-    particleGun->SetParticleDefinition(ion);
-
-    particleGun->SetParticlePosition(G4ThreeVector(0., 0., -7. * um)); // 放在Ni层中心
-
-    // 方向
-    particleGun->SetParticleMomentumDirection(G4ThreeVector(0., 0., 1.));
-    particleGun->SetParticleEnergy(0. * keV);
+    G4int n_particle = 1;
+    fParticleGun = new G4ParticleGun(n_particle);
+    fParticleGun->SetParticlePosition(G4ThreeVector(0., 0., -7. * um));
+    fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0., 0., 1.));
 }
 
 PrimaryGenerator::~PrimaryGenerator()
 {
-    delete particleGun;
+    delete fParticleGun;
 }
 
 void PrimaryGenerator::GeneratePrimaries(G4Event *anEvent)
 {
-    particleGun->GeneratePrimaryVertex(anEvent);
+    if (fParticleGun->GetParticleDefinition() == G4Geantino::Geantino())
+    {
+        G4int Z = 28;
+        G4int A = 63;
+        G4double ionEnergy = 0. * keV;
+        G4ParticleDefinition *ion = G4IonTable::GetIonTable()->GetIon(Z, A, ionEnergy);
+
+        if (ion)
+        {
+            fParticleGun->SetParticleDefinition(ion);
+            fParticleGun->SetParticleEnergy(0. * keV);
+        }
+        else
+        {
+
+            G4Exception("PrimaryGenerator::GeneratePrimaries()",
+                        "MyCode002", FatalException,
+                        "Could not find the Ni63 ion. Check PhysicsList.");
+            ;
+        }
+    }
+    fParticleGun->GeneratePrimaryVertex(anEvent);
 }
 
 /*PrimaryGenerator::PrimaryGenerator() : G4VUserPrimaryGeneratorAction()

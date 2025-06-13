@@ -19,10 +19,9 @@ public:
   virtual void GeneratePrimaries(G4Event *);
 
 private:
-  G4ParticleGun *particleGun;
+  G4ParticleGun *fParticleGun;
   G4ParticleTable *particleTable;
   G4ParticleDefinition *particleDefinition;
   G4GeneralParticleSource *fGPS;
-  RunAction *fRunAction;
 };
 #endif

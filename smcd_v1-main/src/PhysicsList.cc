@@ -1,4 +1,3 @@
-// PhysicsList.cc
 #include "PhysicsList.hh"
 
 #include "G4EmStandardPhysics.hh"

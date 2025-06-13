@@ -23,11 +23,11 @@ int main(int argc, char **argv)
     ui = new G4UIExecutive(argc, argv);
   }
 
-#ifdef G4MULTITHREADED
-  auto runManager = new G4MTRunManager;
-#else
+  // #ifdef G4MULTITHREADED
+  // auto runManager = new G4MTRunManager;
+  // #else
   auto runManager = new G4RunManager;
-#endif
+  // #endif
 
   // physics process
   auto physicsList = new PhysicsList();

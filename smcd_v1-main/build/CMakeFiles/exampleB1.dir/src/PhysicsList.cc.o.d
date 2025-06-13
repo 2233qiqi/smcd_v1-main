@@ -2,7 +2,9 @@ CMakeFiles/exampleB1.dir/src/PhysicsList.cc.o: \
  /home/qiqi/Vs\ Code/Geant_Project/Study-master/smcd_v1-main/smcd_v1-main/src/PhysicsList.cc \
  /usr/include/stdc-predef.h \
  /home/qiqi/Vs\ Code/Geant_Project/Study-master/smcd_v1-main/smcd_v1-main/include/PhysicsList.hh \
- /home/qiqi/Geant4/include/Geant4/G4VUserPhysicsList.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VModularPhysicsList.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VPhysicsConstructor.hh \
+ /home/qiqi/Geant4/include/Geant4/G4ParticleTable.hh \
  /home/qiqi/Geant4/include/Geant4/G4ParticleDefinition.hh \
  /home/qiqi/Geant4/include/Geant4/G4PDefManager.hh \
  /home/qiqi/Geant4/include/Geant4/G4AutoLock.hh \
@@ -251,24 +253,10 @@ CMakeFiles/exampleB1.dir/src/PhysicsList.cc.o: \
  /home/qiqi/Geant4/include/Geant4/CLHEP/Units/PhysicalConstants.h \
  /home/qiqi/Geant4/include/Geant4/CLHEP/Units/SystemOfUnits.h \
  /home/qiqi/Geant4/include/Geant4/G4ParticleDefinition.icc \
- /home/qiqi/Geant4/include/Geant4/G4ParticleTable.hh \
  /home/qiqi/Geant4/include/Geant4/G4ParticleTableIterator.hh \
  /home/qiqi/Geant4/include/Geant4/G4ParticleTable.icc \
- /home/qiqi/Geant4/include/Geant4/G4PhysicsModelCatalog.hh \
- /home/qiqi/Geant4/include/Geant4/G4ProductionCutsTable.hh \
- /home/qiqi/Geant4/include/Geant4/G4MaterialCutsCouple.hh \
- /home/qiqi/Geant4/include/Geant4/G4ProductionCuts.hh \
- /home/qiqi/Geant4/include/Geant4/G4MCCIndexConversionTable.hh \
- /home/qiqi/Geant4/include/Geant4/G4Region.hh \
- /home/qiqi/Geant4/include/Geant4/G4GeomSplitter.hh \
- /home/qiqi/Geant4/include/Geant4/geomwdefs.hh \
- /home/qiqi/Geant4/include/Geant4/G4Region.icc \
- /home/qiqi/Geant4/include/Geant4/G4VUPLSplitter.hh \
- /home/qiqi/Geant4/include/Geant4/rundefs.hh \
- /home/qiqi/Geant4/include/Geant4/G4DeexPrecoParameters.hh \
- /home/qiqi/Geant4/include/Geant4/G4EmBuilder.hh \
- /home/qiqi/Geant4/include/Geant4/G4IonConstructor.hh \
- /home/qiqi/Geant4/include/Geant4/G4LossTableManager.hh \
+ /home/qiqi/Geant4/include/Geant4/G4PhysicsListHelper.hh \
+ /home/qiqi/Geant4/include/Geant4/G4PhysicsListOrderingParameter.hh \
  /home/qiqi/Geant4/include/Geant4/G4ThreadLocalSingleton.hh \
  /home/qiqi/Geant4/include/Geant4/G4Cache.hh \
  /home/qiqi/Geant4/include/Geant4/G4CacheDetails.hh \
@@ -280,8 +268,22 @@ CMakeFiles/exampleB1.dir/src/PhysicsList.cc.o: \
  /usr/include/c++/14/bits/hashtable_policy.h \
  /usr/include/c++/14/bits/enable_special_members.h \
  /usr/include/c++/14/array /usr/include/c++/14/compare \
- /home/qiqi/Geant4/include/Geant4/G4VEnergyLossProcess.hh \
- /home/qiqi/Geant4/include/Geant4/G4VContinuousDiscreteProcess.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VUPLSplitter.hh \
+ /home/qiqi/Geant4/include/Geant4/rundefs.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VUserPhysicsList.hh \
+ /home/qiqi/Geant4/include/Geant4/G4PhysicsModelCatalog.hh \
+ /home/qiqi/Geant4/include/Geant4/G4ProductionCutsTable.hh \
+ /home/qiqi/Geant4/include/Geant4/G4MaterialCutsCouple.hh \
+ /home/qiqi/Geant4/include/Geant4/G4ProductionCuts.hh \
+ /home/qiqi/Geant4/include/Geant4/G4MCCIndexConversionTable.hh \
+ /home/qiqi/Geant4/include/Geant4/G4Region.hh \
+ /home/qiqi/Geant4/include/Geant4/G4GeomSplitter.hh \
+ /home/qiqi/Geant4/include/Geant4/geomwdefs.hh \
+ /home/qiqi/Geant4/include/Geant4/G4Region.icc \
+ /home/qiqi/Geant4/include/Geant4/G4EmStandardPhysics.hh \
+ /home/qiqi/Geant4/include/Geant4/G4DecayPhysics.hh \
+ /home/qiqi/Geant4/include/Geant4/G4Decay.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VRestDiscreteProcess.hh \
  /home/qiqi/Geant4/include/Geant4/G4VProcess.hh \
  /home/qiqi/Geant4/include/Geant4/Randomize.hh \
  /home/qiqi/Geant4/include/Geant4/CLHEP/Random/Randomize.h \
@@ -436,183 +438,8 @@ CMakeFiles/exampleB1.dir/src/PhysicsList.cc.o: \
  /home/qiqi/Geant4/include/Geant4/G4ParticleChange.hh \
  /home/qiqi/Geant4/include/Geant4/G4ParticleChange.icc \
  /home/qiqi/Geant4/include/Geant4/G4ProcessType.hh \
- /home/qiqi/Geant4/include/Geant4/G4EmModelManager.hh \
- /home/qiqi/Geant4/include/Geant4/G4EmTableType.hh \
- /home/qiqi/Geant4/include/Geant4/G4EmProcessSubType.hh \
- /home/qiqi/Geant4/include/Geant4/G4VEmModel.hh \
- /home/qiqi/Geant4/include/Geant4/G4VEmFluctuationModel.hh \
- /home/qiqi/Geant4/include/Geant4/G4VEmAngularDistribution.hh \
- /home/qiqi/Geant4/include/Geant4/G4EmElementSelector.hh \
- /home/qiqi/Geant4/include/Geant4/G4PhysicsLogVector.hh \
- /home/qiqi/Geant4/include/Geant4/G4ParticleChangeForLoss.hh \
- /home/qiqi/Geant4/include/Geant4/G4EmSecondaryParticleType.hh \
- /home/qiqi/Geant4/include/Geant4/G4EmParameters.hh \
- /home/qiqi/Geant4/include/Geant4/G4MscStepLimitType.hh \
- /home/qiqi/Geant4/include/Geant4/G4NuclearFormfactorType.hh \
- /home/qiqi/Geant4/include/Geant4/G4DNAModelSubType.hh \
- /home/qiqi/Geant4/include/Geant4/G4EmFluoDirectory.hh \
- /home/qiqi/Geant4/include/Geant4/G4EmSaturation.hh \
- /home/qiqi/Geant4/include/Geant4/G4ChemTimeStepModel.hh \
- /home/qiqi/Geant4/include/Geant4/G4NuclearLevelData.hh \
- /home/qiqi/Geant4/include/Geant4/G4DeexPrecoParameters.hh \
- /home/qiqi/Geant4/include/Geant4/G4NuclideTable.hh \
- /home/qiqi/Geant4/include/Geant4/G4DecayTable.hh \
- /home/qiqi/Geant4/include/Geant4/G4VDecayChannel.hh \
- /home/qiqi/Geant4/include/Geant4/G4IonTable.hh \
- /home/qiqi/Geant4/include/Geant4/G4Ions.hh \
- /home/qiqi/Geant4/include/Geant4/G4IsotopeProperty.hh \
- /home/qiqi/Geant4/include/Geant4/G4VIsotopeTable.hh \
- /home/qiqi/Geant4/include/Geant4/G4ParticleTypes.hh \
- /home/qiqi/Geant4/include/Geant4/G4ChargedGeantino.hh \
- /home/qiqi/Geant4/include/Geant4/G4Geantino.hh \
- /home/qiqi/Geant4/include/Geant4/G4Gamma.hh \
- /home/qiqi/Geant4/include/Geant4/G4OpticalPhoton.hh \
- /home/qiqi/Geant4/include/Geant4/G4UnknownParticle.hh \
- /home/qiqi/Geant4/include/Geant4/G4ChargedUnknownParticle.hh \
- /home/qiqi/Geant4/include/Geant4/G4MuonPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4MuonMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4TauMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4TauPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4Electron.hh \
- /home/qiqi/Geant4/include/Geant4/G4Positron.hh \
- /home/qiqi/Geant4/include/Geant4/G4NeutrinoTau.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiNeutrinoTau.hh \
- /home/qiqi/Geant4/include/Geant4/G4NeutrinoMu.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiNeutrinoMu.hh \
- /home/qiqi/Geant4/include/Geant4/G4NeutrinoE.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiNeutrinoE.hh \
- /home/qiqi/Geant4/include/Geant4/G4PionPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4PionMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4PionZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4Eta.hh \
- /home/qiqi/Geant4/include/Geant4/G4EtaPrime.hh \
- /home/qiqi/Geant4/include/Geant4/G4KaonPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4KaonMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4KaonZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiKaonZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4KaonZeroLong.hh \
- /home/qiqi/Geant4/include/Geant4/G4KaonZeroShort.hh \
- /home/qiqi/Geant4/include/Geant4/G4DMesonPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4DMesonMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4DMesonZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiDMesonZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4DsMesonPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4DsMesonMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4JPsi.hh \
- /home/qiqi/Geant4/include/Geant4/G4Etac.hh \
- /home/qiqi/Geant4/include/Geant4/G4BMesonPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4BMesonMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4BMesonZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiBMesonZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4BsMesonZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiBsMesonZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4Upsilon.hh \
- /home/qiqi/Geant4/include/Geant4/G4Proton.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiProton.hh \
- /home/qiqi/Geant4/include/Geant4/G4Neutron.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiNeutron.hh \
- /home/qiqi/Geant4/include/Geant4/G4Lambda.hh \
- /home/qiqi/Geant4/include/Geant4/G4SigmaPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4SigmaZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4SigmaMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4XiMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4XiZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4OmegaMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiLambda.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiSigmaPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiSigmaZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiSigmaMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiXiMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiXiZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiOmegaMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4LambdacPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4SigmacPlusPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4SigmacPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4SigmacZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4XicPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4XicZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4OmegacZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiLambdacPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiSigmacPlusPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiSigmacPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiSigmacZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiXicPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiXicZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiOmegacZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4Lambdab.hh \
- /home/qiqi/Geant4/include/Geant4/G4SigmabPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4SigmabZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4SigmabMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4XibZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4XibMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4OmegabMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiLambdab.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiSigmabPlus.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiSigmabZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiSigmabMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiXibZero.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiXibMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiOmegabMinus.hh \
- /home/qiqi/Geant4/include/Geant4/G4Alpha.hh \
- /home/qiqi/Geant4/include/Geant4/G4Deuteron.hh \
- /home/qiqi/Geant4/include/Geant4/G4He3.hh \
- /home/qiqi/Geant4/include/Geant4/G4Triton.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiAlpha.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiDeuteron.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiHe3.hh \
- /home/qiqi/Geant4/include/Geant4/G4AntiTriton.hh \
- /home/qiqi/Geant4/include/Geant4/G4GenericIon.hh \
- /home/qiqi/Geant4/include/Geant4/G4PhysListUtil.hh \
- /home/qiqi/Geant4/include/Geant4/G4HadronicProcess.hh \
- /home/qiqi/Geant4/include/Geant4/G4VDiscreteProcess.hh \
- /home/qiqi/Geant4/include/Geant4/G4EnergyRangeManager.hh \
- /home/qiqi/Geant4/include/Geant4/G4HadronicInteraction.hh \
- /home/qiqi/Geant4/include/Geant4/G4HadFinalState.hh \
- /home/qiqi/Geant4/include/Geant4/G4HadSecondary.hh \
- /home/qiqi/Geant4/include/Geant4/G4LorentzRotation.hh \
- /home/qiqi/Geant4/include/Geant4/CLHEP/Vector/LorentzRotation.h \
- /home/qiqi/Geant4/include/Geant4/CLHEP/Vector/Boost.h \
- /home/qiqi/Geant4/include/Geant4/CLHEP/Vector/BoostX.h \
- /home/qiqi/Geant4/include/Geant4/CLHEP/Vector/BoostX.icc \
- /home/qiqi/Geant4/include/Geant4/CLHEP/Vector/BoostY.h \
- /home/qiqi/Geant4/include/Geant4/CLHEP/Vector/BoostY.icc \
- /home/qiqi/Geant4/include/Geant4/CLHEP/Vector/BoostZ.h \
- /home/qiqi/Geant4/include/Geant4/CLHEP/Vector/BoostZ.icc \
- /home/qiqi/Geant4/include/Geant4/CLHEP/Vector/Boost.icc \
- /home/qiqi/Geant4/include/Geant4/CLHEP/Vector/LorentzRotation.icc \
- /home/qiqi/Geant4/include/Geant4/G4Nucleus.hh \
- /home/qiqi/Geant4/include/Geant4/G4ParticleTypes.hh \
- /home/qiqi/Geant4/include/Geant4/G4ReactionProduct.hh \
- /home/qiqi/Geant4/include/Geant4/G4HadProjectile.hh \
- /home/qiqi/Geant4/include/Geant4/G4HadronicException.hh \
- /home/qiqi/Geant4/include/Geant4/G4ReactionProductVector.hh \
- /home/qiqi/Geant4/include/Geant4/G4HadronicProcessType.hh \
- /home/qiqi/Geant4/include/Geant4/G4CrossSectionDataStore.hh \
- /home/qiqi/Geant4/include/Geant4/G4VCrossSectionDataSet.hh \
- /home/qiqi/Geant4/include/Geant4/G4HadXSTypes.hh \
- /home/qiqi/Geant4/include/Geant4/G4NeutronGeneralProcess.hh \
- /home/qiqi/Geant4/include/Geant4/G4HadDataHandler.hh \
- /home/qiqi/Geant4/include/Geant4/G4PhysicsListHelper.hh \
- /home/qiqi/Geant4/include/Geant4/G4PhysicsListOrderingParameter.hh \
- /home/qiqi/Geant4/include/Geant4/G4Radioactivation.hh \
- /home/qiqi/Geant4/include/Geant4/G4RadioactiveDecay.hh \
- /home/qiqi/Geant4/include/Geant4/G4VRadioactiveDecay.hh \
- /home/qiqi/Geant4/include/Geant4/G4VRestDiscreteProcess.hh \
- /home/qiqi/Geant4/include/Geant4/G4ParticleChangeForRadDecay.hh \
  /home/qiqi/Geant4/include/Geant4/G4ParticleChangeForDecay.hh \
- /home/qiqi/Geant4/include/Geant4/G4NucleusLimits.hh \
- /home/qiqi/Geant4/include/Geant4/G4RadioactiveDecayMode.hh \
- /home/qiqi/Geant4/include/Geant4/G4RadioactiveDecayRatesToDaughter.hh \
- /home/qiqi/Geant4/include/Geant4/G4RadioactiveDecayChainsFromParent.hh \
- /home/qiqi/Geant4/include/Geant4/G4RadioactivityTable.hh \
- /home/qiqi/Geant4/include/Geant4/G4TwoVector.hh \
- /home/qiqi/Geant4/include/Geant4/CLHEP/Vector/TwoVector.h \
- /home/qiqi/Geant4/include/Geant4/CLHEP/Vector/TwoVector.icc \
- /home/qiqi/Geant4/include/Geant4/G4SystemOfUnits.hh \
- /home/qiqi/Geant4/include/Geant4/G4UAtomicDeexcitation.hh \
- /home/qiqi/Geant4/include/Geant4/G4VAtomDeexcitation.hh \
- /home/qiqi/Geant4/include/Geant4/G4AtomicShell.hh \
- /home/qiqi/Geant4/include/Geant4/G4AtomicShellEnumerator.hh \
- /home/qiqi/Geant4/include/Geant4/G4UnitsTable.hh \
- /home/qiqi/Geant4/include/Geant4/G4UnitsTable.icc \
- /home/qiqi/Geant4/include/Geant4/globals.hh
+ /home/qiqi/Geant4/include/Geant4/G4DecayProcessType.hh \
+ /home/qiqi/Geant4/include/Geant4/G4RadioactiveDecayPhysics.hh \
+ /home/qiqi/Geant4/include/Geant4/G4OpticalPhysics.hh \
+ /home/qiqi/Geant4/include/Geant4/G4OpticalParameters.hh

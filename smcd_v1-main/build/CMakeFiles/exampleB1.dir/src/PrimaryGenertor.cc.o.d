@@ -431,4 +431,6 @@ CMakeFiles/exampleB1.dir/src/PrimaryGenertor.cc.o: \
  /home/qiqi/Geant4/include/Geant4/G4VSDFilter.hh \
  /home/qiqi/Geant4/include/Geant4/G4IonTable.hh \
  /home/qiqi/Geant4/include/Geant4/G4Ions.hh \
- /home/qiqi/Geant4/include/Geant4/G4ParticleTable.hh
+ /home/qiqi/Geant4/include/Geant4/G4ParticleTable.hh \
+ /home/qiqi/Geant4/include/Geant4/G4Geantino.hh \
+ /home/qiqi/Geant4/include/Geant4/G4Exception.hh
