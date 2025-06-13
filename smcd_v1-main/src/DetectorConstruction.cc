@@ -18,9 +18,12 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
     G4bool checkOverlaps = true;
 
     // 63Ni
-    auto *elNi = new G4Element("Nickel", "Ni", 28, 58.6934 * g / mole);
-    auto *Ni63 = new G4Material("Ni63", 8.9 * g / cm3, 1);
-    Ni63->AddElement(elNi, 1);
+    G4Isotope *isoNi63 = new G4Isotope("Ni63", 28, 63, 62.9296 * g / mole);
+    G4Isotope *isoNi64 = new G4Isotope("Ni64", 6, 14, 14.000 * g / mole);
+    G4Element *iso_elNi = new G4Element("CustomNickel", "Ni", 2);
+    iso_elNi->AddIsotope(isoNi63, 20. * perCent);
+    iso_elNi->AddIsotope(isoNi64, 80. * perCent);
+    G4Material *MixNi = new G4Material("Ni", 8.9 * g / cm3, 1);
 
     // SiC
     G4Element *elSi = new G4Element("Silicon", "Si", 14, 28.09 * g / mole);
@@ -59,7 +62,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
     G4double totalNi63Z = NumLayersNi63 * layerSpacing;
 
     auto *solidNi63 = new G4Box("SolidNi63", Ni63X, Ni63Y, totalNi63Z / 2);
-    auto *logicalNi63 = new G4LogicalVolume(solidNi63, Ni63, "LogicNi63");
+    auto *logicalNi63 = new G4LogicalVolume(solidNi63, MixNi, "LogicNi63");
     G4VPhysicalVolume *physNi63 = new G4PVPlacement(0, G4ThreeVector(0., 0., -7 * um), logicalNi63, "PhysNi63", logicWorld, false, 0, checkOverlaps);
 
     /*// Ni-layer
@@ -73,7 +76,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
     logicalNi63->SetVisAttributes(niVisAtt);
 
-    fScoringVolume = logicalNi63;
+    fScoringVolume = logicSic;
 
     // new detector
     /*G4double newDetX = 20 * um, newDetY = 20 * um, newSicDetZ = 2 * um;
