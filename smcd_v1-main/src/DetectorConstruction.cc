@@ -73,7 +73,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
     logicalNi63->SetVisAttributes(niVisAtt);
 
-    fScoringVolume = logicSic;
+    fScoringVolume = logicalNi63;
 
     // new detector
     /*G4double newDetX = 20 * um, newDetY = 20 * um, newSicDetZ = 2 * um;
