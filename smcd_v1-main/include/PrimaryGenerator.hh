@@ -9,7 +9,7 @@
 #include "G4SystemOfUnits.hh"
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "RunAction.hh"
-// class RunAction;
+
 class PrimaryGenerator : public G4VUserPrimaryGeneratorAction
 {
 public:

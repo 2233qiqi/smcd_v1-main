@@ -49,6 +49,8 @@
 /vis/viewer/set/autoRefresh true
 /vis/verbose warnings
 
+/tracking/verbose 1
+
 
 # Initialize GPS
 
@@ -69,4 +71,4 @@
 #/gps/ene/mono 0.0174 MeV
 
 #/gps/number 1
-/run/beamOn 100000000
+/run/beamOn 10
