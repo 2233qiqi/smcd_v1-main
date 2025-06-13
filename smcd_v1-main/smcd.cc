@@ -9,8 +9,6 @@
 #include "G4VisExecutive.hh"
 #include "G4NuclideTable.hh"
 
-// #include "PhysicsList.hh"
-#include "QBBC.hh"
 #include "PhysicsList.hh"
 #include "DetectorConstruction.hh"
 #include "ActionInitialization.hh"
@@ -25,10 +23,10 @@ int main(int argc, char **argv)
     ui = new G4UIExecutive(argc, argv);
   }
 
-#ifndef G4MULTITHREADED
-  G4MTRunManager *runManager = new G4MTRunManager;
+#ifdef G4MULTITHREADED
+  auto runManager = new G4MTRunManager;
 #else
-  G4RunManager *runManager = new G4RunManager;
+  auto runManager = new G4RunManager;
 #endif
 
   // physics process
@@ -39,6 +37,8 @@ int main(int argc, char **argv)
   runManager->SetUserInitialization(new DetectorConstruction());
   // primary generator
   runManager->SetUserInitialization(new ActionInitialization());
+
+  runManager->Initialize();
 
   G4VisManager *visManager = new G4VisExecutive("Quiet");
   visManager->Initialize();
@@ -68,6 +68,7 @@ int main(int argc, char **argv)
   }
 
   delete visManager;
+  delete runManager;
 
   return 0;
 }

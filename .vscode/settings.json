@@ -136,7 +136,12 @@
     "cinttypes": "cpp",
     "typeindex": "cpp",
     "typeinfo": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "rcsv_ntuple": "cpp",
+    "file": "cpp",
+    "ntuple": "cpp",
+    "streamers": "cpp",
+    "key": "cpp"
   },
   "cmake.sourceDirectory": "/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/smcd_v1-main"
 }
