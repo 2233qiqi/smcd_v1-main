@@ -63,7 +63,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
     auto *solidNi63 = new G4Box("SolidNi63", Ni63X, Ni63Y, totalNi63Z / 2);
     auto *logicalNi63 = new G4LogicalVolume(solidNi63, MixNi, "LogicNi63");
-    G4VPhysicalVolume *physNi63 = new G4PVPlacement(0, G4ThreeVector(0., 0., -7 * um), logicalNi63, "PhysNi63", logicWorld, false, 0, checkOverlaps);
+    G4VPhysicalVolume *physNi63 = new G4PVPlacement(0, G4ThreeVector(0., 0., -6 * um), logicalNi63, "PhysNi63", logicWorld, false, 0, checkOverlaps);
 
     /*// Ni-layer
     auto *solidNi63layer = new G4Box("SolidNi63", Ni63X, Ni63Y, layerSpacing / 2);

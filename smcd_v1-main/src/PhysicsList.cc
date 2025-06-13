@@ -86,6 +86,9 @@ void PhysicsList::ConstructParticle()
     // minimal set of particles for EM physics and radioactive decay
     //
     G4EmBuilder::ConstructMinimalEmSet();
+
+    G4IonConstructor ionConstructor;
+    ionConstructor.ConstructParticle();
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

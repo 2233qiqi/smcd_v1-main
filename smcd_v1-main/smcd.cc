@@ -11,7 +11,7 @@
 
 // #include "PhysicsList.hh"
 #include "QBBC.hh"
-#include "FTFP_BERT.hh"
+#include "PhysicsList.hh"
 #include "DetectorConstruction.hh"
 #include "ActionInitialization.hh"
 
@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 #endif
 
   // physics process
-  auto physicsList = new FTFP_BERT(0);
+  auto physicsList = new PhysicsList();
 
   runManager->SetUserInitialization(physicsList);
   // detector geometry
