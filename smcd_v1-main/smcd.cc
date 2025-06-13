@@ -7,6 +7,7 @@
 #include "G4VisManager.hh"
 #include "G4UIExecutive.hh"
 #include "G4VisExecutive.hh"
+#include "G4NuclideTable.hh"
 
 // #include "PhysicsList.hh"
 #include "QBBC.hh"

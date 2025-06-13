@@ -3,20 +3,36 @@
 #include "G4ParticleTable.hh"
 #include "G4SystemOfUnits.hh"
 
+#include "PrimaryGenerator.hh"
+#include "G4SystemOfUnits.hh"
+#include "G4Event.hh"
+#include "G4IonTable.hh"
+
 PrimaryGenerator::PrimaryGenerator() : G4VUserPrimaryGeneratorAction()
 {
+    particleGun = new G4ParticleGun(1);
 
-    fGPS = new G4GeneralParticleSource();
-}
+    G4int Z = 28;
+    G4int A = 63;
+    G4double ionEnergy = 0. * keV;
+    G4ParticleDefinition *ion = G4IonTable::GetIonTable()->GetIon(Z, A, ionEnergy);
+    particleGun->SetParticleDefinition(ion);
 
-void PrimaryGenerator::GeneratePrimaries(G4Event *evt)
-{
-    fGPS->GeneratePrimaryVertex(evt);
+    particleGun->SetParticlePosition(G4ThreeVector(0., 0., -7. * um)); // 放在Ni层中心
+
+    // 方向
+    particleGun->SetParticleMomentumDirection(G4ThreeVector(0., 0., 1.));
+    particleGun->SetParticleEnergy(0. * keV);
 }
 
 PrimaryGenerator::~PrimaryGenerator()
 {
-    delete fGPS;
+    delete particleGun;
+}
+
+void PrimaryGenerator::GeneratePrimaries(G4Event *anEvent)
+{
+    particleGun->GeneratePrimaryVertex(anEvent);
 }
 
 /*PrimaryGenerator::PrimaryGenerator() : G4VUserPrimaryGeneratorAction()

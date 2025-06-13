@@ -12,17 +12,17 @@
 // class RunAction;
 class PrimaryGenerator : public G4VUserPrimaryGeneratorAction
 {
+public:
+  PrimaryGenerator();
+  virtual ~PrimaryGenerator();
+
+  virtual void GeneratePrimaries(G4Event *);
+
 private:
   G4ParticleGun *particleGun;
   G4ParticleTable *particleTable;
   G4ParticleDefinition *particleDefinition;
   G4GeneralParticleSource *fGPS;
   RunAction *fRunAction;
-
-public:
-  PrimaryGenerator();
-  virtual ~PrimaryGenerator();
-
-  virtual void GeneratePrimaries(G4Event *);
 };
 #endif
