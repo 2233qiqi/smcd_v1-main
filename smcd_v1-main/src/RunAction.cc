@@ -45,7 +45,5 @@ void RunAction::EndOfRunAction(const G4Run *run)
 
     if (sd)
     {
-        sd->CalculateStatistics();
-        sd->SaveToROOT("final_results.root");
-    }
+        }
 }

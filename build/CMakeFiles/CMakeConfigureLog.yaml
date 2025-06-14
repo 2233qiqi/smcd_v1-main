@@ -850,3 +850,81 @@ events:
         
       exitCode: 0
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/usr/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.3/VTK-vtk-module-find-packages.cmake:397 (find_package)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.3/vtk-config.cmake:159 (include)"
+      - "CMakeLists.txt:13 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/build/CMakeFiles/CMakeScratch/TryCompile-W51jR2"
+      binary: "/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/build/CMakeFiles/CMakeScratch/TryCompile-W51jR2"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.3/patches/99;/usr/lib/x86_64-linux-gnu/cmake/vtk-9.3;/home/qiqi/Root/root_v6.34.08.Linux-ubuntu24.04-x86_64-gcc13.3/root/cmake/modules"
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/build/CMakeFiles/CMakeScratch/TryCompile-W51jR2'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3dc46/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_3dc46.dir/build.make CMakeFiles/cmTC_3dc46.dir/build
+        gmake[1]: 进入目录“/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/build/CMakeFiles/CMakeScratch/TryCompile-W51jR2”
+        Building C object CMakeFiles/cmTC_3dc46.dir/test_mpi.c.o
+        /usr/bin/gcc-13  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_3dc46.dir/test_mpi.c.o -c "/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/build/CMakeFiles/CMakeScratch/TryCompile-W51jR2/test_mpi.c"
+        Linking C executable cmTC_3dc46
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3dc46.dir/link.txt --verbose=1
+        /usr/bin/gcc-13 -L/usr/lib/x86_64-linux-gnu/openmpi/lib CMakeFiles/cmTC_3dc46.dir/test_mpi.c.o -o cmTC_3dc46  /usr/lib/x86_64-linux-gnu/libmpi.so
+        gmake[1]: 离开目录“/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/build/CMakeFiles/CMakeScratch/TryCompile-W51jR2”
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/usr/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.3/VTK-vtk-module-find-packages.cmake:397 (find_package)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.3/vtk-config.cmake:159 (include)"
+      - "CMakeLists.txt:13 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/build/CMakeFiles/CMakeScratch/TryCompile-bHadhK"
+      binary: "/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/build/CMakeFiles/CMakeScratch/TryCompile-bHadhK"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.3/patches/99;/usr/lib/x86_64-linux-gnu/cmake/vtk-9.3;/home/qiqi/Root/root_v6.34.08.Linux-ubuntu24.04-x86_64-gcc13.3/root/cmake/modules"
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/build/CMakeFiles/CMakeScratch/TryCompile-bHadhK'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_fda47/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_fda47.dir/build.make CMakeFiles/cmTC_fda47.dir/build
+        gmake[1]: 进入目录“/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/build/CMakeFiles/CMakeScratch/TryCompile-bHadhK”
+        Building C object CMakeFiles/cmTC_fda47.dir/test_mpi.c.o
+        /usr/bin/gcc-13  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_fda47.dir/test_mpi.c.o -c "/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/build/CMakeFiles/CMakeScratch/TryCompile-bHadhK/test_mpi.c"
+        Linking C executable cmTC_fda47
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fda47.dir/link.txt --verbose=1
+        /usr/bin/gcc-13 -L/usr/lib/x86_64-linux-gnu/openmpi/lib CMakeFiles/cmTC_fda47.dir/test_mpi.c.o -o cmTC_fda47  /usr/lib/x86_64-linux-gnu/libmpi.so
+        gmake[1]: 离开目录“/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/build/CMakeFiles/CMakeScratch/TryCompile-bHadhK”
+        
+      exitCode: 0
+...

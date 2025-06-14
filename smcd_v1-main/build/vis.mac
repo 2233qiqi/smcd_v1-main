@@ -57,7 +57,7 @@
 /gps/particle e-
 /gps/pos/type Volume
 /gps/pos/shape Para
-/gps/pos/centre 0 0 -7 um
+/gps/pos/centre 0 0 -5 um
 /gps/pos/halfx 10 um
 /gps/pos/halfy 10 um
 /gps/pos/halfz 5 um

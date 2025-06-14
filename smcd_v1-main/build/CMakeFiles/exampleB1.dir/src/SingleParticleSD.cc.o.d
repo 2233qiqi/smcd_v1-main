@@ -362,7 +362,138 @@ CMakeFiles/exampleB1.dir/src/SingleParticleSD.cc.o: \
  /home/qiqi/Geant4/include/Geant4/G4SensitiveVolumeList.hh \
  /home/qiqi/Geant4/include/Geant4/G4VSDFilter.hh \
  /home/qiqi/Geant4/include/Geant4/G4Step.hh \
- /home/qiqi/Geant4/include/Geant4/G4Track.hh \
+ /home/qiqi/Geant4/include/Geant4/G4TouchableHistory.hh \
+ /home/qiqi/Geant4/include/Geant4/G4RunManager.hh \
+ /home/qiqi/Geant4/include/Geant4/G4Event.hh /usr/include/c++/14/set \
+ /usr/include/c++/14/bits/stl_set.h \
+ /usr/include/c++/14/bits/stl_multiset.h \
+ /home/qiqi/Geant4/include/Geant4/evtdefs.hh \
+ /home/qiqi/Geant4/include/Geant4/G4PrimaryVertex.hh \
+ /home/qiqi/Geant4/include/Geant4/G4PrimaryParticle.hh \
+ /home/qiqi/Geant4/include/Geant4/G4DCofThisEvent.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VDigiCollection.hh \
+ /home/qiqi/Geant4/include/Geant4/G4TrajectoryContainer.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VTrajectory.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VUserEventInformation.hh \
+ /home/qiqi/Geant4/include/Geant4/G4EventManager.hh \
+ /home/qiqi/Geant4/include/Geant4/G4StackManager.hh \
+ /home/qiqi/Geant4/include/Geant4/G4UserStackingAction.hh \
+ /home/qiqi/Geant4/include/Geant4/G4ClassificationOfNewTrack.hh \
+ /home/qiqi/Geant4/include/Geant4/G4StackedTrack.hh \
+ /home/qiqi/Geant4/include/Geant4/G4TrackStack.hh \
+ /home/qiqi/Geant4/include/Geant4/G4SmartTrackStack.hh \
+ /usr/include/c++/14/array /usr/include/c++/14/compare \
+ /home/qiqi/Geant4/include/Geant4/G4SubEventTrackStack.hh \
+ /home/qiqi/Geant4/include/Geant4/G4SubEvent.hh \
+ /home/qiqi/Geant4/include/Geant4/G4PrimaryTransformer.hh \
+ /home/qiqi/Geant4/include/Geant4/G4ParticleTable.hh \
+ /home/qiqi/Geant4/include/Geant4/G4ParticleTableIterator.hh \
+ /home/qiqi/Geant4/include/Geant4/G4ParticleTable.icc \
+ /home/qiqi/Geant4/include/Geant4/G4TrackingManager.hh \
+ /home/qiqi/Geant4/include/Geant4/G4SteppingManager.hh \
+ /home/qiqi/Geant4/include/Geant4/G4Navigator.hh \
+ /home/qiqi/Geant4/include/Geant4/G4NormalNavigation.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VNavigation.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VSolid.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VSolid.icc \
+ /home/qiqi/Geant4/include/Geant4/G4AuxiliaryNavServices.hh \
+ /home/qiqi/Geant4/include/Geant4/G4AuxiliaryNavServices.icc \
+ /home/qiqi/Geant4/include/Geant4/G4NormalNavigation.icc \
+ /home/qiqi/Geant4/include/Geant4/G4VoxelNavigation.hh \
+ /home/qiqi/Geant4/include/Geant4/G4NavigationLogger.hh \
+ /home/qiqi/Geant4/include/Geant4/G4BlockingList.hh \
+ /home/qiqi/Geant4/include/Geant4/G4BlockingList.icc \
+ /home/qiqi/Geant4/include/Geant4/G4SmartVoxelProxy.hh \
+ /home/qiqi/Geant4/include/Geant4/G4SmartVoxelProxy.icc \
+ /home/qiqi/Geant4/include/Geant4/G4SmartVoxelNode.hh \
+ /home/qiqi/Geant4/include/Geant4/G4SmartVoxelNode.icc \
+ /home/qiqi/Geant4/include/Geant4/G4SmartVoxelHeader.hh \
+ /home/qiqi/Geant4/include/Geant4/G4SmartVoxelHeader.icc \
+ /home/qiqi/Geant4/include/Geant4/G4VoxelNavigation.icc \
+ /home/qiqi/Geant4/include/Geant4/G4ParameterisedNavigation.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VPVParameterisation.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VVolumeMaterialScanner.hh \
+ /home/qiqi/Geant4/include/Geant4/G4ParameterisedNavigation.icc \
+ /home/qiqi/Geant4/include/Geant4/G4ReplicaNavigation.hh \
+ /home/qiqi/Geant4/include/Geant4/G4ReplicaNavigation.icc \
+ /home/qiqi/Geant4/include/Geant4/G4RegularNavigation.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VExternalNavigation.hh \
+ /home/qiqi/Geant4/include/Geant4/G4Navigator.icc \
+ /home/qiqi/Geant4/include/Geant4/G4NoProcess.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VProcess.hh \
+ /home/qiqi/Geant4/include/Geant4/Randomize.hh \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/Randomize.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/DualRand.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandomEngine.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandomEngine.icc \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/JamesRandom.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/MixMaxRng.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/MTwistEngine.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RanecuEngine.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RanluxEngine.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/Ranlux64Engine.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RanluxppEngine.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RanshiEngine.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandBinomial.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/Random.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/Random.icc \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Utility/memory.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandBinomial.icc \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandBreitWigner.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandFlat.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Utility/thread_local.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandFlat.icc \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandBreitWigner.icc \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandChiSquare.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandChiSquare.icc \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandExponential.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandExponential.icc \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandExpZiggurat.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandBit.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandBit.icc \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandGamma.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandGamma.icc \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandGauss.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandGauss.icc \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandGaussQ.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandGaussQ.icc \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandGaussZiggurat.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandGeneral.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandGeneral.icc \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandLandau.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandLandau.icc \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandPoissonQ.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandPoisson.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandPoisson.icc \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandPoissonQ.icc \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandStudentT.h \
+ /home/qiqi/Geant4/include/Geant4/CLHEP/Random/RandStudentT.icc \
+ /home/qiqi/Geant4/include/Geant4/G4PhysicsTable.hh \
+ /home/qiqi/Geant4/include/Geant4/G4PhysicsTable.icc \
+ /home/qiqi/Geant4/include/Geant4/G4VParticleChange.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VParticleChange.icc \
+ /home/qiqi/Geant4/include/Geant4/G4ForceCondition.hh \
+ /home/qiqi/Geant4/include/Geant4/G4GPILSelection.hh \
+ /home/qiqi/Geant4/include/Geant4/G4ParticleChange.hh \
+ /home/qiqi/Geant4/include/Geant4/G4ParticleChange.icc \
+ /home/qiqi/Geant4/include/Geant4/G4ProcessType.hh \
+ /home/qiqi/Geant4/include/Geant4/G4ProcessManager.hh \
+ /home/qiqi/Geant4/include/Geant4/G4ProcessVector.hh \
+ /home/qiqi/Geant4/include/Geant4/G4ProcessVector.icc \
+ /home/qiqi/Geant4/include/Geant4/G4ProcessManager.icc \
+ /home/qiqi/Geant4/include/Geant4/G4UserSteppingAction.hh \
+ /home/qiqi/Geant4/include/Geant4/G4VSteppingVerbose.hh \
+ /home/qiqi/Geant4/include/Geant4/trkgdefs.hh \
+ /home/qiqi/Geant4/include/Geant4/G4TrackingMessenger.hh \
+ /home/qiqi/Geant4/include/Geant4/G4UImessenger.hh \
+ /home/qiqi/Geant4/include/Geant4/G4UIdirectory.hh \
+ /home/qiqi/Geant4/include/Geant4/G4UIcommand.hh \
+ /home/qiqi/Geant4/include/Geant4/G4ApplicationState.hh \
+ /home/qiqi/Geant4/include/Geant4/G4UIparameter.hh \
+ /home/qiqi/Geant4/include/Geant4/G4UserTrackingAction.hh \
+ /home/qiqi/Geant4/include/Geant4/G4RunManagerKernel.hh \
+ /home/qiqi/Geant4/include/Geant4/rundefs.hh /usr/include/c++/14/list \
+ /usr/include/c++/14/bits/stl_list.h /usr/include/c++/14/bits/list.tcc \
  /home/qiqi/Geant4/include/Geant4/G4SystemOfUnits.hh \
  /home/qiqi/Geant4/include/Geant4/G4Threading.hh \
  /home/qiqi/Root/root_v6.34.08.Linux-ubuntu24.04-x86_64-gcc13.3/root/include/TFile.h \
@@ -406,7 +537,6 @@ CMakeFiles/exampleB1.dir/src/SingleParticleSD.cc.o: \
  /home/qiqi/Root/root_v6.34.08.Linux-ubuntu24.04-x86_64-gcc13.3/root/include/ROOT/RSpan.hxx \
  /home/qiqi/Root/root_v6.34.08.Linux-ubuntu24.04-x86_64-gcc13.3/root/include/ROOT/span.hxx \
  /usr/include/c++/14/iterator /usr/include/c++/14/bits/stream_iterator.h \
- /usr/include/c++/14/array /usr/include/c++/14/compare \
  /usr/include/c++/14/cassert /usr/include/c++/14/utility \
  /usr/include/c++/14/bits/stl_relops.h /usr/include/c++/14/unordered_set \
  /usr/include/c++/14/bits/unordered_set.h \

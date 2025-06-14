@@ -1,40 +1,60 @@
 #include "SingleParticleSD.hh"
 #include "G4Step.hh"
-#include "G4Track.hh"
+#include "G4TouchableHistory.hh"
+#include "G4RunManager.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4Threading.hh"
+
 #include "TFile.h"
 #include "TGraphErrors.h"
 #include "TCanvas.h"
 #include <cmath>
 
-SingleParticleSD::SingleParticleSD(G4String name, G4int nbins, G4double maxDist)
+SingleParticleSD::SingleParticleSD(const G4String &name, G4int nbins, G4double maxDist, const G4String &filename)
     : G4VSensitiveDetector(name),
       fNbins(nbins),
       fMaxDist(maxDist),
-      fBinWidth(maxDist / nbins),
-      fEdepSum(nbins, 0.0),
-      fEdepSum2(nbins, 0.0),
-      fHitCounts(nbins, 0),
+      fBinWidth(maxDist > 0 ? maxDist / nbins : 0.0),
+      fOutputFilename(filename),
+      fRunEdepSum(nbins, 0.0),
+      fRunEdepSum2(nbins, 0.0),
+      fRunHitCounts(nbins, 0),
+      fEventEdepSum(nbins, 0.0),
+      fEventEdepSum2(nbins, 0.0),
+      fEventHitCounts(nbins, 0),
       fMeanEdep(nbins, 0.0),
       fStdError(nbins, 0.0)
-
 {
+
+    G4cout << ">>> [DEBUG] SD anme: " << name << " constructed. "
+           << "MaxDist: " << fMaxDist / um << " um, "
+           << "BinWidth: " << fBinWidth / um << " um" << G4endl;
 }
 
 SingleParticleSD::~SingleParticleSD()
 {
     if (G4Threading::IsMasterThread())
     {
-        SaveToROOT("single_particle_results.root");
+
+        CalculateStatistics();
+
+        PrintResultsToTerminal();
+
+        G4cout << "\n>>> Saving results to " << fOutputFilename << "..." << G4endl;
+        SaveToROOT();
     }
 }
 
 void SingleParticleSD::Initialize(G4HCofThisEvent *)
 {
-    std::fill(fEdepSum.begin(), fEdepSum.end(), 0.0);
-    std::fill(fEdepSum2.begin(), fEdepSum2.end(), 0.0);
-    std::fill(fHitCounts.begin(), fHitCounts.end(), 0);
+    ClearEventData();
+}
+
+void SingleParticleSD::ClearEventData()
+{
+    std::fill(fEventEdepSum.begin(), fEventEdepSum.end(), 0.0);
+    std::fill(fEventEdepSum2.begin(), fEventEdepSum2.end(), 0.0);
+    std::fill(fEventHitCounts.begin(), fEventHitCounts.end(), 0);
 }
 
 G4bool SingleParticleSD::ProcessHits(G4Step *step, G4TouchableHistory *)
@@ -42,98 +62,115 @@ G4bool SingleParticleSD::ProcessHits(G4Step *step, G4TouchableHistory *)
 
     G4double edep = step->GetTotalEnergyDeposit();
     if (edep <= 0.0)
-        return false;
-
-    G4int replicaID = step->GetPreStepPoint()->GetTouchableHandle()->GetReplicaNumber();
-    if (replicaID >= 0 && replicaID < fNbins)
     {
-        std::lock_guard<std::mutex> lock(fMutex);
-        fEdepSum[replicaID] += edep;
-        fEdepSum2[replicaID] += edep * edep;
-        fHitCounts[replicaID]++;
+        return false;
     }
-    /* // 计算每一层的能量沉积
 
-     G4ThreeVector pos = step->GetPreStepPoint()->GetPosition();
+    G4ThreeVector pos = step->GetPreStepPoint()->GetPosition();
+    G4double dist = pos.mag();
+    G4int bin_idx = static_cast<int>(dist / fBinWidth);
 
-     G4double dist = pos.mag();
-     if (dist > fMaxDist)
-         return false;
+    if (dist < fMaxDist && bin_idx >= 0 && bin_idx < fNbins)
+    {
+        fEventEdepSum[bin_idx] += edep;
+        fEventEdepSum2[bin_idx] += edep * edep;
+        fEventHitCounts[bin_idx]++;
+    }
 
-     G4int bin = static_cast<int>(dist / fBinWidth);
-     if (bin >= fNbins)
-         bin = fNbins - 1;
-
-     std::lock_guard<std::mutex> lock(fMutex);
-     fEdepSum[bin] += edep;
-     fEdepSum2[bin] += edep * edep;
-     fHitCounts[bin]++;
- */
     return true;
+}
+
+void SingleParticleSD::EndOfEvent(G4HCofThisEvent *)
+{
+
+    std::lock_guard<std::mutex> lock(fMutex);
+    for (G4int i = 0; i < fNbins; ++i)
+    {
+        fRunEdepSum[i] += fEventEdepSum[i];
+        fRunEdepSum2[i] += fEventEdepSum2[i];
+        fRunHitCounts[i] += fEventHitCounts[i];
+    }
+    fEventCount++;
 }
 
 void SingleParticleSD::CalculateStatistics()
 {
+    fTotalEdepAllEvents = 0.0;
     for (G4int i = 0; i < fNbins; ++i)
     {
-        if (fHitCounts[i] > 0)
+        if (fRunHitCounts[i] > 0)
         {
-            // Calculate mean
-            fMeanEdep[i] = fEdepSum[i] / fHitCounts[i];
-
-            // Calculate standard error
-            if (fHitCounts[i] > 1)
+            fMeanEdep[i] = fRunEdepSum[i] / fRunHitCounts[i];
+            if (fRunHitCounts[i] > 1)
             {
-                G4double variance = (fEdepSum2[i] - fEdepSum[i] * fMeanEdep[i]) / (fHitCounts[i] - 1);
-                fStdError[i] = std::sqrt(variance / fHitCounts[i]);
+                G4double variance = (fRunEdepSum2[i] - fRunEdepSum[i] * fMeanEdep[i]) / (fRunHitCounts[i] - 1);
+                fStdError[i] = std::sqrt(std::abs(variance) / fRunHitCounts[i]);
             }
         }
+        fTotalEdepAllEvents += fRunEdepSum[i];
     }
 }
 
-void SingleParticleSD::SaveToROOT(const G4String &filename)
+void SingleParticleSD::SaveToROOT()
 {
-    CalculateStatistics();
+    TFile file(fOutputFilename.c_str(), "RECREATE");
+    if (!file.IsOpen())
+    {
+        G4cerr << "错误:无法打开ROOT文件 " << fOutputFilename << G4endl;
+        return;
+    }
 
-    TFile file(filename.c_str(), "RECREATE");
-
-    // Prepare data
     std::vector<G4double> x(fNbins), y(fNbins), ex(fNbins), ey(fNbins);
     for (G4int i = 0; i < fNbins; ++i)
     {
-        x[i] = (i + 0.5) * fBinWidth; // Z轴
-        ex[i] = fBinWidth / 2.0;      // Half bin width
-        y[i] = fMeanEdep[i] / keV;    // Convert to MeV
-        ey[i] = fStdError[i] / keV;   // Convert to MeV
+        x[i] = (i + 0.5) * fBinWidth / um;
+        ex[i] = (fBinWidth / 2.0) / um;
+        y[i] = fMeanEdep[i] / keV;
+        ey[i] = fStdError[i] / keV;
     }
 
-    // Create and save graph
     TGraphErrors *graph = new TGraphErrors(fNbins, x.data(), y.data(), ex.data(), ey.data());
-    graph->SetName("EnergyDeposit");
-    graph->SetTitle("OutSiC Energy Deposit Distance;Distance [mm];Energy Deposit [keV]");
-    graph->SetMarkerStyle(23);
-    graph->SetMarkerColor(kBlack);
-    graph->SetMarkerSize(1);
+    graph->SetName("EnergyDepositGraph");
+    graph->SetTitle("Mean Energy Deposit vs. Distance;Distance from Origin [um];Mean Energy Deposit per Hit [keV]");
+    graph->SetMarkerStyle(20);
+    graph->SetMarkerColor(kBlue);
+    graph->SetLineColor(kBlue);
     graph->Write();
 
-    // Save plot image
     TCanvas canvas("canvas", "Energy Deposit", 800, 600);
     graph->Draw("AP");
     canvas.SaveAs("Single-energy-deposit.png");
-
     file.Close();
+    G4cout << "结果已成功保存。" << G4endl;
 }
-void SingleParticleSD::EndOfEvent(G4HCofThisEvent *hce)
-{
-    G4double totalEdep = 0.0;
-    for (const auto &edep : fEdepSum)
-    {
-        totalEdep += edep;
-    }
-    fTotalEdepAllEvents += totalEdep;
 
-    // G4cout << ">>> Total energy deposited in this event: "
-    //<< totalEdep / keV << " keV" << G4endl;
-    G4cout << "\n=== Total energy deposited across all events: "
-           << fTotalEdepAllEvents / keV << " keV" << G4endl;
-};
+void SingleParticleSD::PrintResultsToTerminal()
+{
+    G4cout << "\n======================== FINAL RESULTS (Summary) ========================" << G4endl;
+    G4cout << "Total energy deposited across all events: " << fTotalEdepAllEvents / keV << " keV" << G4endl;
+    G4cout << "\nDetailed data per bin:" << G4endl;
+    G4cout << "---------------------------------------------------------------" << G4endl;
+    G4cout << std::setw(5) << "Bin" << " |"
+           << std::setw(15) << "Position (um)" << " |"
+           << std::setw(15) << "Mean Edep (keV)" << " |"
+           << std::setw(15) << "Std Error (keV)" << " |"
+           << std::setw(10) << "Hits" << G4endl;
+    G4cout << "---------------------------------------------------------------" << G4endl;
+
+    for (G4int i = 0; i < fNbins; ++i)
+    {
+        if (fRunHitCounts[i] > 0)
+        {
+            G4double x = (i + 0.5) * fBinWidth / um;
+            G4double y = fMeanEdep[i] / keV;
+            G4double ey = fStdError[i] / keV;
+
+            G4cout << std::setw(5) << i << " |"
+                   << std::setw(15) << x << " |"
+                   << std::setw(15) << y << " |"
+                   << std::setw(15) << ey << " |"
+                   << std::setw(10) << fRunHitCounts[i] << G4endl;
+        }
+    }
+    G4cout << "---------------------------------------------------------------" << G4endl;
+}
