@@ -18,7 +18,7 @@ void PrimaryGenerator::GeneratePrimaries(G4Event *event)
     fGPS->GeneratePrimaryVertex(event);
 }
 
-PrimaryGenerator::~PrimaryGenerator()
+PrimaryGenerator::PrimaryGenerator()
 {
     delete fGPS;
 }
