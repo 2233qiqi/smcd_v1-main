@@ -91,8 +91,8 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
     logicNewDet->SetVisAttributes(newsicVisatt);
 */
 
-    G4int nbins = 100;       // 径向分箱数量
-    G4double rmax = 15 * um; // 最大径向距离
+    G4int nbins = 500;       // 径向分箱数量
+    G4double rmax = 10 * um; // 最大径向距离
 
     // G4VSensitiveDetector *radiaSD = new RadialEnergyDepositSD("RadialEnergyDeposit", nbins, rmax);
 
@@ -106,7 +106,7 @@ void DetectorConstruction::ConstructSDandField()
     if (!SDman->FindSensitiveDetector("SingleParticleSD", false))
     {
         G4VSensitiveDetector *radialSD =
-            new SingleParticleSD("SingleParticleSD", 100, 15 * um, "particle_results.root");
+            new SingleParticleSD("SingleParticleSD", 100, 10 * um, "particle_results.root");
         SDman->AddNewDetector(radialSD);
         fScoringVolume->SetSensitiveDetector(radialSD);
     }
