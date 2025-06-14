@@ -141,7 +141,7 @@ void SingleParticleSD::SaveToROOT()
     graph->Draw("AP");
     canvas.SaveAs("Single-energy-deposit.png");
     file.Close();
-    G4cout << "结果已成功保存。" << G4endl;
+    G4cout << "successfully store" << G4endl;
 }
 
 void SingleParticleSD::PrintResultsToTerminal()
