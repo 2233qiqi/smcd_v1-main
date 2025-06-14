@@ -8,7 +8,22 @@
 #include "G4Event.hh"
 #include "G4Exception.hh"
 
-PrimaryGenerator::PrimaryGenerator()
+PrimaryGenerator::PrimaryGenerator() : G4VUserPrimaryGeneratorAction()
+{
+    fGPS = new G4GeneralParticleSource();
+}
+
+void PrimaryGenerator::GeneratePrimaries(G4Event *event)
+{
+    fGPS->GeneratePrimaryVertex(event);
+}
+
+PrimaryGenerator::~PrimaryGenerator()
+{
+    delete fGPS;
+}
+
+/*PrimaryGenerator::PrimaryGenerator()
     : G4VUserPrimaryGeneratorAction(),
       fParticleGun(nullptr)
 {
@@ -48,7 +63,7 @@ void PrimaryGenerator::GeneratePrimaries(G4Event *anEvent)
     }
     fParticleGun->GeneratePrimaryVertex(anEvent);
 }
-
+*/
 /*PrimaryGenerator::PrimaryGenerator() : G4VUserPrimaryGeneratorAction()
 {
 

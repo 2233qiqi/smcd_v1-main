@@ -9,7 +9,6 @@ PhysicsList::PhysicsList() : G4VModularPhysicsList()
     SetVerboseLevel(1);
 
     //  电磁物理 (必须)
-    // 包含了电子、光子等所有标准电磁相互作用
     RegisterPhysics(new G4EmStandardPhysics());
 
     //  通用衰变过程
