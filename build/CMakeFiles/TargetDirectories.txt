@@ -1,3 +1,0 @@
-/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/build/CMakeFiles/exampleB1.dir
-/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/build/CMakeFiles/edit_cache.dir
-/home/qiqi/Vs Code/Geant_Project/Study-master/smcd_v1-main/build/CMakeFiles/rebuild_cache.dir

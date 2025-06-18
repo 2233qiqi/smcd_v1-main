@@ -38,7 +38,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
     G4Material *worldmat = nist->FindOrBuildMaterial("G4_Galactic");
 
     // World
-    G4double worldX = 20. * um, worldY = 20. * um, worldZ = 20 * um;
+    G4double worldX = 50 * um, worldY = 50 * um, worldZ = 50 * um;
     auto *solidWorld = new G4Box("SoildWorld", worldX, worldY, worldZ);
     G4LogicalVolume *logicWorld = new G4LogicalVolume(solidWorld, worldmat, "LogicWorld");
     G4VPhysicalVolume *physWorld = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), logicWorld, "PhysWorld", 0, false, 0, checkOverlaps);
@@ -47,37 +47,37 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
     logicWorld->SetVisAttributes(worldVisAtt);
 
     // SIC
-    G4double sicX = 10 * um, sicY = 10. * um, sicZ = 5 * um;
+    G4double sicX = 5 * um, sicY = 5 * um, sicZ = 2.5 * um;
     G4Box *solidSic = new G4Box("SolidSic", sicX, sicY, sicZ);
     G4LogicalVolume *logicSic = new G4LogicalVolume(solidSic, SiC, "LogicSic");
-    G4VPhysicalVolume *physSic = new G4PVPlacement(0, G4ThreeVector(0. * um, 0., 5 * um), logicSic, "PhysSic", logicWorld, false, 0, checkOverlaps);
+    G4VPhysicalVolume *physSic = new G4PVPlacement(0, G4ThreeVector(0. * um, 0., 2.5 * um), logicSic, "PhysSic", logicWorld, false, 0, checkOverlaps);
 
     G4VisAttributes *sicVisAtt = new G4VisAttributes(G4Colour(1.0, 0.0, 0.0, 0.7));
     sicVisAtt->SetVisibility(true);
     logicSic->SetVisAttributes(sicVisAtt);
 
     // Ni
-    /* G4int NumLayersNi63 = 20;
-     G4double layerSpacing = 0.25 * um;
-     G4double Ni63X = 10. * um, Ni63Y = 10. * um, Ni63Z = 2.5 * um;
-     G4double totalNi63Z = NumLayersNi63 * layerSpacing;
+    G4int NumLayersNi63 = 20;
+    G4double layerSpacing = 0.25 * um;
+    G4double Ni63X = 5 * um, Ni63Y = 5 * um, Ni63Z = 2.5 * um;
+    G4double totalNi63Z = NumLayersNi63 * layerSpacing;
 
-     auto *solidNi63 = new G4Box("SolidNi63", Ni63X, Ni63Y, Ni63Z);
-     auto *logicalNi63 = new G4LogicalVolume(solidNi63, MixNi, "LogicNi63");
-     G4VPhysicalVolume *physNi63 = new G4PVPlacement(0, G4ThreeVector(0., 0., -5 * um), logicalNi63, "PhysNi63", logicWorld, false, 0, checkOverlaps);
+    auto *solidNi63 = new G4Box("SolidNi63", Ni63X, Ni63Y, Ni63Z);
+    auto *logicalNi63 = new G4LogicalVolume(solidNi63, MixNi, "LogicNi63");
+    G4VPhysicalVolume *physNi63 = new G4PVPlacement(0, G4ThreeVector(0., 0., -2.5 * um), logicalNi63, "PhysNi63", logicWorld, false, 0, checkOverlaps);
 
-     // Ni-layer
-     auto *solidNi63layer = new G4Box("SolidNi63", Ni63X, Ni63Y, layerSpacing / 2);
-     auto *logicalNi63layer = new G4LogicalVolume(solidNi63layer, Ni63, "LogicaNi63layer");
+    /* // Ni-layer
+  auto *solidNi63layer = new G4Box("SolidNi63", Ni63X, Ni63Y, layerSpacing / 2);
+  auto *logicalNi63layer = new G4LogicalVolume(solidNi63layer, Ni63, "LogicaNi63layer");
 
-     new G4PVReplica("Ni63layer", logicalNi63layer, logicalNi63, kZAxis, NumLayersNi63, layerSpacing);
+  new G4PVReplica("Ni63layer", logicalNi63layer, logicalNi63, kZAxis, NumLayersNi63, layerSpacing);
+*/
+    auto *niVisAtt = new G4VisAttributes(G4Colour(1.0, 0.843, 0.0, 0.8));
+    niVisAtt->SetVisibility(true);
 
-     auto *niVisAtt = new G4VisAttributes(G4Colour(1.0, 0.843, 0.0, 0.8));
-     niVisAtt->SetVisibility(true);
+    logicalNi63->SetVisAttributes(niVisAtt);
 
-     logicalNi63->SetVisAttributes(niVisAtt);
-  */
-    fScoringVolume = logicSic;
+    fScoringVolume = logicalNi63;
 
     // new detector
     /*G4double newDetX = 20 * um, newDetY = 20 * um, newSicDetZ = 2 * um;
@@ -91,7 +91,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
     logicNewDet->SetVisAttributes(newsicVisatt);
 */
 
-    G4int nbins = 500;       // 径向分箱数量
+    G4int nbins = 100;       // 径向分箱数量
     G4double rmax = 10 * um; // 最大径向距离
 
     // G4VSensitiveDetector *radiaSD = new RadialEnergyDepositSD("RadialEnergyDeposit", nbins, rmax);
@@ -101,13 +101,38 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 void DetectorConstruction::ConstructSDandField()
 {
-    G4SDManager *SDman = G4SDManager::GetSDMpointer();
 
-    if (!SDman->FindSensitiveDetector("SingleParticleSD", false))
+    G4SDManager *sdManager = G4SDManager::GetSDMpointer();
+
+    G4String niSdName = "Ni63_SelfAbsorption_SD";
+
+    if (!sdManager->FindSensitiveDetector(niSdName, false))
     {
-        G4VSensitiveDetector *radialSD =
-            new SingleParticleSD("SingleParticleSD", 100, 10 * um, "particle_results.root");
-        SDman->AddNewDetector(radialSD);
-        fScoringVolume->SetSensitiveDetector(radialSD);
+        G4cout << "Constructing Sensitive Detector: " << niSdName << G4endl;
+
+        auto *niSd = new SingleParticleSD(niSdName,
+                                          150,
+                                          15. * um,
+                                          "ni63_self_absorption.root");
+
+        sdManager->AddNewDetector(niSd);
+
+        SetSensitiveDetector("LogicNi63", niSd, true);
+    }
+
+    G4String sicSdName = "SiC_EscapedParticles_SD";
+
+    if (!sdManager->FindSensitiveDetector(sicSdName, false))
+    {
+        G4cout << "Constructing Sensitive Detector: " << sicSdName << G4endl;
+
+        auto *sicSd = new SingleParticleSD(sicSdName,
+                                           150,
+                                           15. * um,
+                                           "sic_escaped_particles.root");
+
+        sdManager->AddNewDetector(sicSd);
+
+        SetSensitiveDetector("LogicSic", sicSd, true);
     }
 }
